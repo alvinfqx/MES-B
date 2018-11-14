@@ -1,0 +1,323 @@
+--1.TRAN_TRANSFER_LOG 记录表
+CREATE TABLE [dbo].[TRAN_TRANSFER_LOG](
+[Data] [nvarchar](60) NOT NULL,
+[KeyColum] [nvarchar](120) NOT NULL,
+[TransferDate] [datetime] NULL,
+[Log] [nvarchar](max) NULL
+) ON [PRIMARY];
+
+--2.TRAN_MOM 製令單
+CREATE TABLE [dbo].[TRAN_MOM](
+[TranId] [bigint] IDENTITY(1,1) NOT NULL,
+[MoNo] [nvarchar](20) NOT NULL,
+[MoSeq] [smallint] NOT NULL DEFAULT 0,
+[MoDate] [datetime] NOT NULL,
+[Version] [smallint] NULL DEFAULT 0,
+[LotNo] [nvarchar](30) NULL,
+[PartId] [nvarchar](60) NULL,
+[Qty] [numeric](14,4) NULL,
+[UnitId] [nvarchar](4) NULL,
+[StartDate] [datetime] NULL,
+[FinishDate] [datetime] NULL,
+[OrderNo] [nvarchar](120) NULL,
+[CustomerId] [nvarchar](30) NULL,
+[AccountId] [nvarchar](30) NULL,
+[ShipmentDate] [datetime] NULL,
+[WarehouseId] [nvarchar](30) NULL,
+[Status] [char](2) NULL,
+[OverRate] [numeric](5,2) NULL DEFAULT 0,
+[Source] [char](1) NULL DEFAULT 2,
+[Remark] [nvarchar](120) NULL,
+[TransferFlag] [char](1) NULL DEFAULT 'N',
+[TransferDate] [datetime] NULL,
+CONSTRAINT [PK_TRAN_MOM] PRIMARY KEY CLUSTERED 
+(
+[TranId] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+) ON [PRIMARY];
+
+--3.TRAN_MOM_PROCESS 製令製程
+CREATE TABLE [dbo].[TRAN_MOM_PROCESS](
+[TranId] [bigint] IDENTITY(1,1) NOT NULL,
+[MoNo] [nvarchar](20) NOT NULL,
+[MoSeq] [smallint] NOT NULL DEFAULT 0,
+[PartId] [nvarchar](60) NOT NULL,
+[Sequence] [char](4) NULL,
+[ProcessId] [nvarchar](10) NULL,
+[WorkCenterId] [nvarchar](10) NULL,
+[StartDate] [datetime] NULL,
+[FinishDate] [datetime] NULL,
+[ResourceReport] [char](1) NULL,
+[Qty] [numeric](14,4) NULL,
+[UnitId] [nvarchar](4) NULL,
+[UnitRate] [numeric](14,4) NULL,
+[StandardTime] [int] NULL,
+[PrepareTime] [int] NULL,
+[Status] [char](2) NULL,
+[Remark] [nvarchar](120) NULL,
+[TransferFlag] [char](1) NULL DEFAULT 'N',
+[TransferDate] [datetime] NULL,
+CONSTRAINT [PK_TRAN_MOM_PROCESS] PRIMARY KEY CLUSTERED 
+(
+[TranId] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+) ON [PRIMARY];
+
+--4.TRAN_MOM_PROCESS_BOM 製令製程用料
+CREATE TABLE [dbo].[TRAN_MOM_PROCESS_BOM](
+[TranId] [bigint] IDENTITY(1,1) NOT NULL,
+[MoNo] [nvarchar](20) NOT NULL,
+[MoSeq] [smallint] NOT NULL DEFAULT 0,
+[Sequence] [char](4) NOT NULL,
+[ProcessId] [nvarchar](10) NULL,
+[SortSequence] [char](4) NULL,
+[Component] [nvarchar](60) NULL,
+[BaseQty] [numeric](16,8) NULL,
+[ScrapRate] [numeric](5,3) NULL,
+[UseQty] [numeric](16,8) NULL,
+[Remark] [nvarchar](120) NULL,
+[TransferFlag] [char](1) NULL DEFAULT 'N',
+[TransferDate] [datetime] NULL,
+CONSTRAINT [PK_TRAN_MOM_PROCESS_BOM] PRIMARY KEY CLUSTERED 
+(
+[TranId] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+) ON [PRIMARY];
+
+--5.TRAN_PART 料品主檔
+CREATE TABLE [dbo].[TRAN_PART](
+[TranId] [bigint] IDENTITY(1,1) NOT NULL,
+[Part] [nvarchar](60) NULL,
+[Description] [nvarchar](120) NULL,
+[Specification] [nvarchar](120) NULL,
+[Remark] [nvarchar](120) NULL,
+[Status] [char](2) NULL DEFAULT 1,
+[UnitId] [nvarchar](4) NULL,
+[Type] [char](1) NULL,
+[Class1Id] [nvarchar](10) NULL,
+[Class2Id] [nvarchar](10) NULL,
+[Class3Id] [nvarchar](10) NULL,
+[Class4Id] [nvarchar](10) NULL,
+[Class5Id] [nvarchar](10) NULL,
+[AuxiliaryUnitId] [nvarchar](4) NULL,
+[AuxiliaryUnitRatio] [numeric](9,4) NULL,
+[IfRound] [char](1) NULL,
+[Round] [char](1) NULL,
+[Drawing] [nvarchar](30) NULL,
+[PartSource] [char](1) NULL,
+[BarCode] [nvarchar](30) NULL,
+[Lot] [char](1) NULL,
+[InspectionGroupId] [nvarchar](10) NULL,
+[OverRate] [numeric](5,2) NULL,
+[TransferFlag] [char](1) NULL DEFAULT 'N',
+[TransferDate] [datetime] NULL,
+CONSTRAINT [PK_TRAN_PART] PRIMARY KEY CLUSTERED 
+(
+[TranId] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+) ON [PRIMARY];
+
+--6.TRAN_CUSTOMER 客戶主檔
+CREATE TABLE [dbo].[TRAN_CUSTOMER](
+[TranId] [bigint] IDENTITY(1,1) NOT NULL,
+[Customer] [nvarchar](30) NULL,
+[CustomerDesc] [nvarchar](120) NULL,
+[Contacts] [nvarchar](50) NULL,
+[Email] [nvarchar](80) NULL,
+[AccountId] [nvarchar](30) NULL,
+[Class1Id] [nvarchar](10) NULL,
+[Class2Id] [nvarchar](10) NULL,
+[Remark] [nvarchar](120) NULL,
+[Status] [char](2) NULL,
+[TransferFlag] [char](1) NULL DEFAULT 'N',
+[TransferDate] [datetime] NULL,
+CONSTRAINT [PK_TRAN_CUSTOMER] PRIMARY KEY CLUSTERED 
+(
+[TranId] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+) ON [PRIMARY];
+
+--7.TRAN_VENDOR 廠商主檔
+CREATE TABLE [dbo].[TRAN_VENDOR](
+[TranId] [bigint] IDENTITY(1,1) NOT NULL,
+[VendorType] [char](2) NULL,
+[Vendor] [nvarchar](30) NULL,
+[VendorDesc] [nvarchar](120) NULL,
+[Contacts] [nvarchar](50) NULL,
+[Email] [nvarchar](80) NULL,
+[AccountId] [nvarchar](30) NULL,
+[Class1Id] [nvarchar](10) NULL,
+[Class2Id] [nvarchar](10) NULL,
+[Remark] [nvarchar](120) NULL,
+[Status] [char](2) NULL,
+[TransferFlag] [char](1) NULL DEFAULT 'N',
+[TransferDate] [datetime] NULL,
+CONSTRAINT [PK_TRAN_VENDOR] PRIMARY KEY CLUSTERED 
+(
+[TranId] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+) ON [PRIMARY];
+
+--8.TRAN_PROCESS 製程主檔
+CREATE TABLE [dbo].[TRAN_PROCESS](
+[TranId] [bigint] IDENTITY(1,1) NOT NULL,
+[Process] [char](10) NULL,
+[ProcessDesc] [nvarchar](120) NULL,
+[Workcenter] [nvarchar](10) NULL,
+[OperationFlag] [char](1) NULL DEFAULT 'N',
+[Remark] [nvarchar](120) NULL,
+[Status] [char](2) NULL,
+[TransferFlag] [char](1) NULL,
+[TransferDate] [datetime] NULL,
+CONSTRAINT [PK_TRAN_PROCESS] PRIMARY KEY CLUSTERED 
+(
+[TranId] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+) ON [PRIMARY];
+
+--9.TRAN_DOCUMENT_TO_ERP 單據拋轉記錄檔
+CREATE TABLE [dbo].[TRAN_DOCUMENT_TO_ERP](
+[DocKind] [nvarchar](30) NOT NULL DEFAULT 'SFC',
+[DocumentNo] [nvarchar](30) NULL,
+[Sequence] [smallint] NULL,
+[DocFlag1] [nvarchar](10) NULL,
+[DocFlag2] [nvarchar](20) NULL,
+[DocFlag3] [nvarchar](30) NULL,
+[TransferFlag] [char](1) NULL DEFAULT 'N',
+[TransferDate] [datetime] NULL
+) ON [PRIMARY];
+
+--10.BCC_SFCTB 移轉單交換檔
+CREATE TABLE [dbo].[SFCTB](
+[TB901] [nvarchar](1) NULL,
+[TB001] [nvarchar](4) NULL,
+[TB002] [nvarchar](11) NULL,
+[TB003] [nvarchar](8) NULL,
+[TB004] [nvarchar](1) NULL,
+[TB005] [nvarchar](40) NULL,
+[TB006] [nvarchar](40) NULL,
+[TB007] [nvarchar](1) NULL,
+[TB008] [nvarchar](40) NULL,
+[TB009] [nvarchar](40) NULL,
+[TC003] [nvarchar](4) NULL,
+[TC004] [nvarchar](4) NULL,
+[TC005] [nvarchar](11) NULL,
+[TC006] [nvarchar](40) NULL,
+[TC007] [nvarchar](40) NULL,
+[TC008] [nvarchar](40) NULL,
+[TC009] [nvarchar](40) NULL,
+[TC010] [nvarchar](10) NULL,
+[TC014] [numeric](16,3) NULL,
+[TC016] [numeric](16,3) NULL,
+[TC020] [nvarchar](16) NULL,
+[TC021] [nvarchar](16) NULL,
+[TC032] [nvarchar](20) NULL,
+[TC047] [nvarchar](40) NULL,
+[TC048] [nvarchar](60) NULL,
+[TC049] [nvarchar](60) NULL
+) ON [PRIMARY];
+
+--11.TRAN_ORDER_CHANGE 訂單變更
+CREATE TABLE [dbo].[TRAN_ORDER_CHANGE](
+[TranId] [bigint] IDENTITY(1,1) NOT NULL,
+[OrderNo] [nvarchar](30) NULL,
+[OldDate] [datetime] NULL,
+[NewDate] [datetime] NULL,
+[TransferFlag] [char](1) NULL DEFAULT 'N',
+[TransferDate] [datetime] NULL,
+CONSTRAINT [PK_TRAN_ORDER_CHANGE] PRIMARY KEY CLUSTERED 
+(
+[TranId] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+) ON [PRIMARY];
+
+--12.TRAN_MOM_CHANGE 製令單變更
+CREATE TABLE [dbo].[TRAN_MOM_CHANGE](
+[TranId] [bigint] IDENTITY(1,1) NOT NULL,
+[MoNo] [nvarchar](20) NULL,
+[PartId] [nvarchar](60) NULL,
+[OldQty] [numeric](14,4) NULL,
+[NewQty] [numeric](14,4) NULL,
+[TransferFlag] [char](1) NULL DEFAULT 'N',
+[TransferDate] [datetime] NULL,
+CONSTRAINT [PK_TRAN_MOM_CHANGE] PRIMARY KEY CLUSTERED 
+(
+[TranId] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+) ON [PRIMARY];
+
+--13.TRAN_MOM_PROCESS_CHANGE 製令製程變更表
+CREATE TABLE [dbo].[TRAN_MOM_PROCESS_CHANGE](
+[TranId] [bigint] IDENTITY(1,1) NOT NULL,
+[MoNo] [nvarchar](20) NULL,
+[PartId] [nvarchar](60) NULL,
+[OldSequence] [char](4) NULL,
+[OldProcessId] [nvarchar](10) NULL,
+[OldWorkCenterId] [nvarchar](10) NULL,
+[NewSequence] [char](4) NULL,
+[NewProcessId] [nvarchar](10) NULL,
+[NewWorkCenterId] [nvarchar](10) NULL,
+[StartDate] [datetime] NULL,
+[FinishDate] [datetime] NULL,
+[ResourceReport] [char](1) NULL DEFAULT 'Y',
+[Qty] [numeric](14,4) NULL,
+[UnitId] [nvarchar](4) NULL,
+[UnitRate] [numeric](14,4) NULL,
+[StandardTime] [int] NULL,
+[PrepareTime] [int] NULL,
+[Status] [char](2) NULL,
+[Remark] [nvarchar](120) NULL,
+[TransferFlag] [char](1) NULL DEFAULT 'N',
+[TransferDate] [datetime] NULL,
+CONSTRAINT [PK_TRAN_MOM_PROCESS_CHANGE] PRIMARY KEY CLUSTERED 
+(
+[TranId] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+) ON [PRIMARY];
+
+--14.TRAN_MOM_BOM_CHANGE 製令用料變更表
+CREATE TABLE [dbo].[TRAN_MOM_BOM_CHANGE](
+[TranId] [bigint] IDENTITY(1,1) NOT NULL,
+[MoNo] [nvarchar](20) NULL,
+[MoSeq] [smallint] NULL DEFAULT 0,
+[Sequence] [char](4) NULL,
+[ProcessId] [nvarchar](10) NULL,
+[OldSortSequence] [char](4) NULL,
+[OldComponent] [nvarchar](60) NULL,
+[OldBaseQty] [numeric](16,8) NULL,
+[OldScrapRate] [numeric](5,3) NULL,
+[OldUseQty] [numeric](16,8) NULL,
+[OldRealQty] [numeric](16,8) NULL,
+[NewSortSequence] [char](4) NULL,
+[NewComponent] [nvarchar](60) NULL,
+[NewBaseQty] [numeric](16,8) NULL,
+[NewScrapRate] [numeric](5,3) NULL,
+[NewUseQty] [numeric](16,8) NULL,
+[NewRealQty] [numeric](16,8) NULL,
+[TransferFlag] [char](1) NULL DEFAULT 'N',
+[TransferDate] [datetime] NULL,
+CONSTRAINT [PK_TRAN_MOM_BOM_CHANGE] PRIMARY KEY CLUSTERED 
+(
+[TranId] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+) ON [PRIMARY];
+
+
+--15.TRAN_MOM_BOM_USEQTY 製令用料變更表
+CREATE TABLE [dbo].[TRAN_MOM_BOM_USEQTY](
+[TranId] [bigint] IDENTITY(1,1) NOT NULL,
+[DocumentNo] [nvarchar](20) NULL,
+[DocSeq] [smallint] NULL DEFAULT 0,
+[MoNo] [nvarchar](20) NULL,
+[Sequence] [char](4) NULL,
+[ProcessId] [nvarchar](10) NULL,
+[Component] [nvarchar](60) NULL,
+[UseQty] [numeric](16,8) NULL,
+[TransferFlag] [char](1) NULL DEFAULT 'N',
+[TransferDate] [datetime] NULL,
+CONSTRAINT [PK_TRAN_MOM_BOM_USEQTY] PRIMARY KEY CLUSTERED 
+(
+[TranId] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+) ON [PRIMARY];
+

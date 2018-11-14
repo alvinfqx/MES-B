@@ -1,0 +1,57 @@
+CREATE TABLE [dbo].[EMS_EquipmentKeyStand](
+[ID] [int] IDENTITY(1,1) NOT NULL,
+[SystemID] [varchar](50)  NOT NULL,
+[EKeyStandID] [varchar](30)  NOT NULL,
+[EquimentID] [varchar](30)  NULL,
+[ClassID] [varchar](30) NULL,
+[ItemID] [varchar](30) NULL,
+[Model] [nvarchar](40) NULL,
+[Status] [varchar](30)  NOT NULL,
+[Comments] [nvarchar](max) NULL,
+[Modifier] [varchar](30) NOT NULL,
+[ModifiedTime] [datetime] NOT NULL DEFAULT  GETUTCDATE(),
+[ModifiedLocalTime] [datetime] NOT NULL DEFAULT  GETDATE(),
+[Creator] [varchar](30) NOT NULL,
+[CreateTime] [datetime] NOT NULL DEFAULT  GETUTCDATE(),
+[CreateLocalTime] [datetime] NOT NULL DEFAULT  GETDATE(),
+CONSTRAINT [PK_EMS_EquipmentKeyStand] PRIMARY KEY CLUSTERED 
+(
+[ID] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+) ON [PRIMARY];
+create unique nonclustered index  [uniqueEKeyStandID] on [EMS_EquipmentKeyStand] ([SystemID] asc,  [EKeyStandID] asc );
+INSERT[dbo].[SYS_TableProperty]([SystemID], [TablePropertyID], [TableName], [Database],[Modifier],[Creator]) VALUES(N'10042',130, N'EMS_EquipmentKeyStand', N'10042', N'adminy', N'adminy');
+INSERT [dbo].[SYS_SerialNumber] ([SystemID], [SNID], [TableName], [TablePropertyID], [FirstSN], [SplitOne], [DateID], [SplitTwo], [Number], [IsClear], [Sequence],[Modifier], [Creator]) VALUES (N'10042', N'100420021213000130', N'EMS_EquipmentKeyStand', 130, N'10042', NULL, N'yyMM', NULL, N'1', 0, 1, N'adminy', N'adminy');
+
+
+
+
+CREATE TABLE [dbo].[EMS_EquipmentKeyStandDetails](
+[ID] [int] IDENTITY(1,1) NOT NULL,
+[SystemID] [varchar](50)  NOT NULL,
+[EKSDetailID] [varchar](30)  NOT NULL,
+[EKeyStandID] [varchar](30)  NOT NULL,
+[ProjectID] [varchar](30) NOT NULL,
+[Attribute] [varchar](30) NULL,
+[Standard] [nvarchar](30) NULL,
+[NumStar] [numeric](8,2) NULL,
+[NumEnd] [numeric](8,2) NULL,
+[YValue] [nvarchar](2) NULL,
+[NValue] [nvarchar](2) NULL,
+[WordValue] [nvarchar](120) NULL,
+[Status] [varchar](30)  NOT NULL,
+[Comments] [nvarchar](max) NULL,
+[Modifier] [varchar](30) NOT NULL,
+[ModifiedTime] [datetime] NOT NULL DEFAULT  GETUTCDATE(),
+[ModifiedLocalTime] [datetime] NOT NULL DEFAULT  GETDATE(),
+[Creator] [varchar](30) NOT NULL,
+[CreateTime] [datetime] NOT NULL DEFAULT  GETUTCDATE(),
+[CreateLocalTime] [datetime] NOT NULL DEFAULT  GETDATE(),
+CONSTRAINT [PK_EMS_EquipmentKeyStandDetails] PRIMARY KEY CLUSTERED 
+(
+[ID] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+) ON [PRIMARY];
+create unique nonclustered index  [uniqueEKSDetailID] on [EMS_EquipmentKeyStandDetails] ([SystemID] asc,  [EKSDetailID] asc );
+INSERT[dbo].[SYS_TableProperty]([SystemID], [TablePropertyID], [TableName], [Database],[Modifier],[Creator]) VALUES(N'10042',131, N'EMS_EquipmentKeyStandDetails', N'10042', N'adminy', N'adminy');
+INSERT [dbo].[SYS_SerialNumber] ([SystemID], [SNID], [TableName], [TablePropertyID], [FirstSN], [SplitOne], [DateID], [SplitTwo], [Number], [IsClear], [Sequence],[Modifier], [Creator]) VALUES (N'10042', N'100420021213000131', N'EMS_EquipmentKeyStandDetails', 131, N'10042', NULL, N'yyMM', NULL, N'1', 0, 1, N'adminy', N'adminy');

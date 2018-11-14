@@ -1,0 +1,220 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!--
+此文件由 Web 项目的发布/打包过程使用。可以通过编辑此 MSBuild 文件
+自定义此过程的行为。为了解与此相关的更多内容，请访问 https://go.microsoft.com/fwlink/?LinkID=208121。 
+-->
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <TimeStampOfAssociatedLegacyPublishXmlFile />
+    <_PublishTargetUrl>C:\开发\网站发布\MES</_PublishTargetUrl>
+  </PropertyGroup>
+  <ItemGroup>
+    <File Include="bin/ICSharpCode.SharpZipLib.dll">
+      <publishTime>09/30/2017 11:34:15</publishTime>
+    </File>
+    <File Include="bin/MFSwaggerUI.dll">
+      <publishTime>10/11/2017 15:36:07</publishTime>
+    </File>
+    <File Include="bin/MFSwaggerUI.dll.config">
+      <publishTime>09/30/2017 11:33:56</publishTime>
+    </File>
+    <File Include="bin/Microsoft.Web.Infrastructure.dll">
+      <publishTime>09/30/2017 11:34:12</publishTime>
+    </File>
+    <File Include="bin/MonkeyFly.dll">
+      <publishTime>09/30/2017 11:34:18</publishTime>
+    </File>
+    <File Include="bin/MonkeyFly.MES.ApiWebHost.dll">
+      <publishTime>10/11/2017 15:36:18</publishTime>
+    </File>
+    <File Include="bin/MonkeyFly.MES.BasicService.dll">
+      <publishTime>10/11/2017 15:36:07</publishTime>
+    </File>
+    <File Include="bin/MonkeyFly.MES.FilterAttributes.dll">
+      <publishTime>10/11/2017 15:36:08</publishTime>
+    </File>
+    <File Include="bin/MonkeyFly.MES.Models.dll">
+      <publishTime>10/11/2017 15:36:07</publishTime>
+    </File>
+    <File Include="bin/MonkeyFly.MES.ModelServices.dll">
+      <publishTime>10/11/2017 15:36:09</publishTime>
+    </File>
+    <File Include="bin/MonkeyFly.MES.Services.dll">
+      <publishTime>10/11/2017 15:36:10</publishTime>
+    </File>
+    <File Include="bin/MonkeyFly.MES.Webapi.dll">
+      <publishTime>10/11/2017 15:36:12</publishTime>
+    </File>
+    <File Include="bin/MonkeyFly.MFC.BasicService.dll">
+      <publishTime>09/30/2017 11:34:18</publishTime>
+    </File>
+    <File Include="bin/MonkeyFly.MFC.FilterAttributes.dll">
+      <publishTime>09/30/2017 11:34:18</publishTime>
+    </File>
+    <File Include="bin/MonkeyFly.MFC.Models.dll">
+      <publishTime>09/30/2017 11:34:18</publishTime>
+    </File>
+    <File Include="bin/MonkeyFly.MFC.ModelServices.dll">
+      <publishTime>09/30/2017 11:34:18</publishTime>
+    </File>
+    <File Include="bin/MonkeyFly.MFC.Services.dll">
+      <publishTime>09/30/2017 11:34:18</publishTime>
+    </File>
+    <File Include="bin/MonkeyFly.MFC.Webapi.dll">
+      <publishTime>09/30/2017 11:34:18</publishTime>
+    </File>
+    <File Include="bin/Newtonsoft.Json.dll">
+      <publishTime>09/30/2017 11:34:17</publishTime>
+    </File>
+    <File Include="bin/NPOI.dll">
+      <publishTime>09/30/2017 11:34:15</publishTime>
+    </File>
+    <File Include="bin/NPOI.OOXML.dll">
+      <publishTime>09/30/2017 11:34:15</publishTime>
+    </File>
+    <File Include="bin/NPOI.OpenXml4Net.dll">
+      <publishTime>09/30/2017 11:34:15</publishTime>
+    </File>
+    <File Include="bin/NPOI.OpenXmlFormats.dll">
+      <publishTime>09/30/2017 11:34:15</publishTime>
+    </File>
+    <File Include="bin/roslyn/csc.exe">
+      <publishTime>09/30/2017 11:34:11</publishTime>
+    </File>
+    <File Include="bin/roslyn/Microsoft.Build.Tasks.CodeAnalysis.dll">
+      <publishTime>09/30/2017 11:34:10</publishTime>
+    </File>
+    <File Include="bin/roslyn/Microsoft.CodeAnalysis.CSharp.dll">
+      <publishTime>09/30/2017 11:34:10</publishTime>
+    </File>
+    <File Include="bin/roslyn/Microsoft.CodeAnalysis.dll">
+      <publishTime>09/30/2017 11:34:11</publishTime>
+    </File>
+    <File Include="bin/roslyn/Microsoft.CodeAnalysis.VisualBasic.dll">
+      <publishTime>09/30/2017 11:34:11</publishTime>
+    </File>
+    <File Include="bin/roslyn/Microsoft.CSharp.Core.targets">
+      <publishTime>09/30/2017 11:34:10</publishTime>
+    </File>
+    <File Include="bin/roslyn/Microsoft.VisualBasic.Core.targets">
+      <publishTime>09/30/2017 11:34:11</publishTime>
+    </File>
+    <File Include="bin/roslyn/System.Collections.Immutable.dll">
+      <publishTime>09/30/2017 11:34:11</publishTime>
+    </File>
+    <File Include="bin/roslyn/System.Reflection.Metadata.dll">
+      <publishTime>09/30/2017 11:34:11</publishTime>
+    </File>
+    <File Include="bin/roslyn/vbc.exe">
+      <publishTime>09/30/2017 11:34:11</publishTime>
+    </File>
+    <File Include="bin/roslyn/VBCSCompiler.exe">
+      <publishTime>09/30/2017 11:34:11</publishTime>
+    </File>
+    <File Include="bin/roslyn/VBCSCompiler.exe.config">
+      <publishTime>09/30/2017 11:34:11</publishTime>
+    </File>
+    <File Include="bin/System.Net.Http.Formatting.dll">
+      <publishTime>09/30/2017 11:34:06</publishTime>
+    </File>
+    <File Include="bin/System.Web.Cors.dll">
+      <publishTime>09/30/2017 11:34:06</publishTime>
+    </File>
+    <File Include="bin/System.Web.Http.Cors.dll">
+      <publishTime>09/30/2017 11:34:06</publishTime>
+    </File>
+    <File Include="bin/System.Web.Http.dll">
+      <publishTime>09/30/2017 11:34:06</publishTime>
+    </File>
+    <File Include="bin/System.Web.Http.WebHost.dll">
+      <publishTime>09/30/2017 11:34:06</publishTime>
+    </File>
+    <File Include="bin/WebActivatorEx.dll">
+      <publishTime>09/30/2017 11:34:18</publishTime>
+    </File>
+    <File Include="bin/zh-Hans/System.Net.Http.Formatting.resources.dll">
+      <publishTime>09/30/2017 11:34:06</publishTime>
+    </File>
+    <File Include="bin/zh-Hans/System.Web.Http.resources.dll">
+      <publishTime>09/30/2017 11:34:06</publishTime>
+    </File>
+    <File Include="bin/zh-Hans/System.Web.Http.WebHost.resources.dll">
+      <publishTime>09/30/2017 11:34:06</publishTime>
+    </File>
+    <File Include="Global.asax">
+      <publishTime>09/30/2017 11:34:00</publishTime>
+    </File>
+    <File Include="swaggerui/css/google-fonts.css">
+      <publishTime>09/30/2017 11:34:00</publishTime>
+    </File>
+    <File Include="swaggerui/css/hightlight.default.css">
+      <publishTime>09/30/2017 11:34:00</publishTime>
+    </File>
+    <File Include="swaggerui/css/screen.css">
+      <publishTime>09/30/2017 11:34:00</publishTime>
+    </File>
+    <File Include="swaggerui/images/pet_store_api.png">
+      <publishTime>09/30/2017 11:34:00</publishTime>
+    </File>
+    <File Include="swaggerui/images/throbber.gif">
+      <publishTime>09/30/2017 11:34:00</publishTime>
+    </File>
+    <File Include="swaggerui/images/wordnik_api.png">
+      <publishTime>09/30/2017 11:34:00</publishTime>
+    </File>
+    <File Include="swaggerui/index.html">
+      <publishTime>09/30/2017 11:34:00</publishTime>
+    </File>
+    <File Include="swaggerui/lib/backbone-min.js">
+      <publishTime>09/30/2017 11:34:00</publishTime>
+    </File>
+    <File Include="swaggerui/lib/handlebars-1.0.0.js">
+      <publishTime>09/30/2017 11:34:00</publishTime>
+    </File>
+    <File Include="swaggerui/lib/handlebars-1.0.rc.1.js">
+      <publishTime>09/30/2017 11:34:00</publishTime>
+    </File>
+    <File Include="swaggerui/lib/handlebars.runtime-1.0.0.beta.6.js">
+      <publishTime>09/30/2017 11:34:00</publishTime>
+    </File>
+    <File Include="swaggerui/lib/highlight.7.3.pack.js">
+      <publishTime>09/30/2017 11:34:00</publishTime>
+    </File>
+    <File Include="swaggerui/lib/jquery-1.8.0.min.js">
+      <publishTime>09/30/2017 11:34:00</publishTime>
+    </File>
+    <File Include="swaggerui/lib/jquery.ba-bbq.min.js">
+      <publishTime>09/30/2017 11:34:00</publishTime>
+    </File>
+    <File Include="swaggerui/lib/jquery.min.js">
+      <publishTime>09/30/2017 11:34:00</publishTime>
+    </File>
+    <File Include="swaggerui/lib/jquery.slideto.min.js">
+      <publishTime>09/30/2017 11:34:00</publishTime>
+    </File>
+    <File Include="swaggerui/lib/jquery.wiggle.min.js">
+      <publishTime>09/30/2017 11:34:00</publishTime>
+    </File>
+    <File Include="swaggerui/lib/shred.bundle.js">
+      <publishTime>09/30/2017 11:34:00</publishTime>
+    </File>
+    <File Include="swaggerui/lib/shred/content.js">
+      <publishTime>09/30/2017 11:34:00</publishTime>
+    </File>
+    <File Include="swaggerui/lib/swagger.js">
+      <publishTime>09/30/2017 11:34:00</publishTime>
+    </File>
+    <File Include="swaggerui/lib/underscore-min.js">
+      <publishTime>09/30/2017 11:34:00</publishTime>
+    </File>
+    <File Include="swaggerui/swagger-ui.js">
+      <publishTime>09/30/2017 11:34:00</publishTime>
+    </File>
+    <File Include="swaggerui/swagger-ui.min.js">
+      <publishTime>09/30/2017 11:34:00</publishTime>
+    </File>
+    <File Include="Web.config">
+      <publishTime>10/11/2017 15:36:19</publishTime>
+    </File>
+  </ItemGroup>
+</Project>
